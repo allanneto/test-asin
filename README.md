@@ -6,10 +6,10 @@ Este teste busca avaliar quesitos técnicos para as pessoas que se candidatem à
 
 Evoluir o projeto de uma PokeDex em SPA (Single Page Application) usando ReactJS e NodeJS
 
-
 ## Informação importante
+
 - Este projeto já contém alguns padrões e um deles e a presença de task runners.
-Estes são utilizados para verificar padrões de projeto, como a execução dos testes, padronização dos linters (eslint, prettier e commit lint) e bloqueio da Branch master
+  Estes são utilizados para verificar padrões de projeto, como a execução dos testes, padronização dos linters (eslint, prettier e commit lint) e bloqueio da Branch master
 
 - Para subir um novo código, é preciso fazer um fork desse projeto e abrir uma nova PR a cada novo push
 
@@ -25,16 +25,17 @@ Outra coisa que nos incomoda é que a API retorna poucos dados na primeira requi
 ## O que queremos ver
 
 ### backend
+
 Criar uma API em NodeJS e um banco de dados **RELACIONAL** que irá salvar os dados já consultados pelo usuário. Caso os dados do pokemon já exista na base, retorna-los, caso contrário, buscar na pokeAPI e salvar no banco de dados para futuras consultas
 
 ### frontend
+
 Criação de uma tela simples de detalhes dos pokemon que será apresentada assim que o usuário clicar nos cards de cada pokemon
 
 ## O que será avaliado
 
- - Sua semântica e capacidade de evoluir um projeto mantendo so padrões pre estabelecidos
- - Facilidade de entendimento do seu código
-
+- Sua semântica e capacidade de evoluir um projeto mantendo os padrões pre estabelecidos
+- Facilidade de entendimento do seu código
 
 ## Bonus round
 

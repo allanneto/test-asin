@@ -8,7 +8,7 @@ function Header({ quantity }) {
   return (
     <header className="header">
       <Link to="/">
-        <FiHome size={20} />
+        <FiHome size={30} />
       </Link>
       Total of pokemon: {quantity}
     </header>

@@ -1,49 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { getSinglePokemon } from '../../services/api.services';
-import { replaceAll, numberWith3Digits } from '../../util';
+import { numberWith3Digits } from '../../util';
+import * as Styled from './styles';
 
-import './styles.css';
-
-function Card({ url }) {
-  const [pokemonData, setPokemonData] = useState({
-    name: 'loading',
-  });
-
-  useEffect(() => {
-    const [, splitedId] = url?.split('pokemon');
-    const id = replaceAll({
-      string: splitedId,
-      search: '/',
-      replace: '',
-    });
-
-    getSinglePokemon({ id }).then(response => setPokemonData(response.data));
-  }, [url]);
+function Card({ data }) {
+  const history = useHistory();
 
   return (
-    <div
-      className={
-        pokemonData?.types?.length
-          ? `pokemon-card ${pokemonData?.types[0].type.name}`
-          : 'pokemon-card'
-      }
+    <Styled.Container
+      onClick={() => history.push(`/pokemon/${data.poke_id}`)}
+      pokeType={data.types[0].type.name}
     >
-      <div className="content">
-        <span className="id">#{numberWith3Digits(pokemonData?.id)}</span>
-        <strong>{pokemonData?.name}</strong>
-        {pokemonData?.types?.map(pokemonType => (
-          <p key={pokemonData?.types?.indexOf(pokemonType)} className="types">
-            {pokemonType?.type.name}
-          </p>
-        ))}
-      </div>
+      <Styled.Content>
+        <Styled.IDText>#{numberWith3Digits(data.poke_id)}</Styled.IDText>
 
-      <img
-        src={pokemonData?.sprites?.front_default}
-        alt={`front sprite of ${pokemonData?.name}`}
-      />
-    </div>
+        <Styled.PokemonInfo>
+          <Styled.Info>
+            <Styled.Name>{data.name}</Styled.Name>
+            {data.types.map(pokemonType => (
+              <Styled.Types key={data.types.indexOf(pokemonType)}>
+                {pokemonType.type.name}
+              </Styled.Types>
+            ))}
+          </Styled.Info>
+          <Styled.PokemonImage
+            src={data.pokemon_image}
+            alt={`front sprite of ${data.name}`}
+          />
+        </Styled.PokemonInfo>
+      </Styled.Content>
+    </Styled.Container>
   );
 }
 
